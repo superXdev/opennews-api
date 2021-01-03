@@ -42,7 +42,7 @@ class ApiController extends Controller
     			'id' => $collect->id,
     			'title' => $collect->title,
     			'image' => $collect->image,
-    			'link' => env('app_url').'/go/'.$collect->id,
+    			'link' => env('APP_URL').'/go/'.$collect->id,
     			'tag' => $collect->tag,
     			'source' => $collect->source,
     			'views' => $collect->views,
