@@ -26,8 +26,8 @@ class News extends Model
     		$data = $data->where('title', 'ilike', "%{$keyword}%");
     	}
     	
-    	return $data->orderBy($filter[0], $filter[1])
-    				->skip($skip)->take($take)->get();
+    	return [$data->orderBy($filter[0], $filter[1])
+                    ->skip($skip)->take($take)->get(), $data->count()];
     	
     }
 }

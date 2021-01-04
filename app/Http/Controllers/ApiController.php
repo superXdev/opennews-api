@@ -36,7 +36,7 @@ class ApiController extends Controller
     	}
 
     	// rebuild the structure of JSON
-    	$data = collect($data)->map(function($collection, $key){
+    	$results = collect($data[0])->map(function($collection, $key){
     		$collect = (object)$collection;
     		return [
     			'id' => $collect->id,
@@ -52,7 +52,10 @@ class ApiController extends Controller
 
 
     	// return the response to JSON
-    	return response()->json($data, 200);
+    	return response()->json([
+            'results' => $results,
+            'pages' => round($data[1] / $limit)
+        ], 200);
     }
 
     public function tags()
